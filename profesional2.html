@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistencia Académica Profesional | Trabajos Escolares</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: #1a202c;
+            background: #0f172a;
+            overflow-x: hidden;
+        }
+        
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #581c87 100%);
+            padding: 120px 0 100px;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        h1 {
+            font-size: 3.5em;
+            font-weight: 800;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        .cta-buttons {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #25D366;
+            color: white;
+            padding: 18px 45px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+        }
+        
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 18px 45px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+            padding: 50px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            color: white;
+        }
+        
+        .stat-number {
+            font-size: 3em;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            background: #f8fafc;
+            position: relative;
+        }
+        
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        section.white {
+            background: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 70px;
+        }
+        
+        .section-tag {
+            display: inline-block;
+            color: #6366f1;
+            font-weight: 700;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+        }
+        
+        h2 {
+            font-size: 2.8em;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .section-description {
+            font-size: 1.2em;
+            color: #64748b;
+            line-height: 1.7;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+            border-color: #6366f1;
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+        
+        .feature-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 15px;
+        }
+        
+        .feature-description {
+            color: #64748b;
+            line-height: 1.7;
+            font-size: 1.05em;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            position: relative;
+        }
+        
+        .step {
+            background: white;
+            padding: 40px 35px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(99, 102, 241, 0.15);
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            font-weight: 800;
+            margin: 0 auto 25px;
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+        }
+        
+        .step-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+        
+        .step-description {
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        .pricing-card {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+            padding: 60px;
+            border-radius: 24px;
+            text-align: center;
+            color: white;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 25px 50px rgba(30, 58, 138, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .pricing-card h3 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .pricing-card p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            line-height: 1.7;
+            position: relative;
+        }
+        
+        .delivery-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .delivery-card {
+            background: white;
+            padding: 45px 35px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .delivery-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .delivery-card:hover {
+            border-color: #6366f1;
+            box-shadow: 0 15px 35px rgba(99, 102, 241, 0.15);
+        }
+        
+        .delivery-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .delivery-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .delivery-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 15px;
+        }
+        
+        .delivery-time {
+            font-size: 1.1em;
+            color: #6366f1;
+            font-weight: 600;
+        }
+        
+        .exclusions {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 40px;
+            border-radius: 20px;
+            border-left: 6px solid #f59e0b;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .exclusions h3 {
+            color: #92400e;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .exclusions ul {
+            list-style: none;
+        }
+        
+        .exclusions li {
+            color: #78350f;
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            font-size: 1.1em;
+        }
+        
+        .exclusions li::before {
+            content: '×';
+            position: absolute;
+            left: 0;
+            font-size: 1.8em;
+            color: #f59e0b;
+            font-weight: bold;
+        }
+        
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            padding: 35px 40px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.1);
+            border-color: #6366f1;
+        }
+        
+        .faq-question {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .faq-question::before {
+            content: 'Q';
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+        
+        .faq-answer {
+            color: #64748b;
+            font-size: 1.1em;
+            line-height: 1.7;
+            padding-left: 50px;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="1.5" fill="rgba(99,102,241,0.3)"/></svg>') repeat;
+        }
+        
+        .contact-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-section h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .contact-description {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: #25D366;
+            color: white;
+            padding: 22px 55px;
+            text-decoration: none;
+            border-radius: 16px;
+            font-size: 1.3em;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
+            margin-bottom: 30px;
+        }
+        
+        .whatsapp-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(37, 211, 102, 0.6);
+        }
+        
+        .contact-info {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-top: 30px;
+        }
+        
+        .contact-info p {
+            margin: 10px 0;
+        }
+        
+        footer {
+            background: #020617;
+            color: #94a3b8;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        footer p {
+            font-size: 1.05em;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            h2 {
+                font-size: 2em;
+            }
+            
+            .hero {
+                padding: 80px 0 60px;
+            }
+            
+            .container {
+                padding: 0 20px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .features-grid,
+            .process-steps,
+            .delivery-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="badge">✨ Servicio Académico Profesional</span>
+                <h1>Asistencia para Trabajos Escolares con Investigación</h1>
+                <p class="hero-subtitle">Apoyo especializado para estudiantes de secundaria. Trabajos escritos de calidad, basados en investigación rigurosa y fuentes confiables, adaptados a las exigencias de tu profesor.</p>
+                
+                <div class="cta-buttons">
+                    <a href="https://wa.me/1234567890" class="btn-primary">
+                        <span>💬</span>
+                        Solicitar Cotización
+                    </a>
+                    <a href="#servicios" class="btn-secondary">
+                        <span>📋</span>
+                        Ver Servicios
+                    </a>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">24h</span>
+                        <span class="stat-label">Entrega Express</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Fuentes Confiables</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">+500</span>
+                        <span class="stat-label">Trabajos Entregados</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <section id="servicios" class="white">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Nuestros Servicios</span>
+                    <h2>Todo lo que Necesitas para tu Éxito Académico</h2>
+                    <p class="section-description">Ofrecemos un servicio integral que garantiza trabajos de calidad profesional adaptados a tus necesidades específicas</p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <div class="feature-title">Investigación Profesional</div>
+                        <p class="feature-description">Investigación exhaustiva del tema utilizando fuentes académicas confiables y verificadas</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">✍️</div>
+                        <div class="feature-title">Redacción Personalizada</div>
+                        <p class="feature-description">Adaptamos el formato, estilo y estructura según las indicaciones específicas de tu profesor</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <div class="feature-title">Bibliografía Incluida</div>
+                        <p class="feature-description">Incluimos bibliografía completa y correctamente citada cuando el profesor lo requiera</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">💾</div>
+                        <div class="feature-title">Múltiples Formatos</div>
+                        <p class="feature-description">Entrega digital en PDF, Word y otros formatos según tus necesidades</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🖨️</div>
+                        <div class="feature-title">Impresión Opcional</div>
+                        <p class="feature-description">Servicio de impresión profesional disponible con costo adicional</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">✅</div>
+                        <div class="feature-title">Calidad Garantizada</div>
+                        <p class="feature-description">Revisión detallada para asegurar la calidad y cumplimiento de todos los requisitos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Especialidades</span>
+                    <h2>Tipos de Trabajos que Realizamos</h2>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📖</div>
+                        <div class="feature-title">Trabajos de Investigación</div>
+                        <p class="feature-description">Investigaciones profundas y bien estructuradas sobre cualquier tema académico</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">👤</div>
+                        <div class="feature-title">Biografías</div>
+                        <p class="feature-description">Perfiles completos y detallados de personajes históricos o contemporáneos</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-title">Informes y Reportes</div>
+                        <p class="feature-description">Documentos técnicos con análisis y presentación de datos</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🎓</div>
+                        <div class="feature-title">Trabajos Finales</div>
+                        <p class="feature-description">Proyectos integradores y trabajos finales de trimestre o semestre</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="white">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Proceso Simple</span>
+                    <h2>Cómo Funciona</h2>
+                    <p class="section-description">En solo 5 pasos sencillos tendrás tu trabajo listo y de calidad</p>
+                </div>
+                
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Contacto Inicial</div>
+                        <p class="step-description">Envías el tema por WhatsApp y nos cuentas de qué se trata</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Detalles del Trabajo</div>
+                        <p class="step-description">Indicas formato, páginas, fecha de entrega y requisitos específicos</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Cotización</div>
+                        <p class="step-description">Te enviamos precio exacto y tiempo de entrega estimado</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Desarrollo</div>
+                        <p class="step-description">Trabajamos en tu proyecto con investigación y redacción profesional</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-title">Entrega</div>
+                        <p class="step-description">Recibes el archivo digital listo para usar o imprimir</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Información Necesaria</span>
+                    <h2>Qué Necesitas para Solicitar</h2>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📝</div>
+                        <div class="feature-title">Tema del Trabajo</div>
+                        <p class="feature-description">El tema específico que asignó tu profesor</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <div class="feature-title">Materia</div>
+                        <p class="feature-description">La asignatura para la cual es el trabajo</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📋</div>
+                        <div class="feature-title">Indicaciones</div>
+                        <p class="feature-description">Instrucciones específicas del profesor (formato, estilo, etc.)</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📅</div>
+                        <div class="feature-title">Fecha de Entrega</div>
+                        <p class="feature-description">Cuándo necesitas tener el trabajo terminado</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🔖</div>
+                        <div class="feature-title">Bibliografía</div>
+                        <p class="feature-description">Si el profesor requiere fuentes citadas</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🖨️</div>
+                        <div class="feature-title">Impresión</div>
+                        <p class="feature-description">Si necesitas el trabajo impreso</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="white">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Inversión</span>
+                    <h2>Precios Personalizados</h2>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>💰 Cotización Flexible</h3>
+                    <p>Los precios varían según el tipo de trabajo, extensión, complejidad y fecha de entrega. Cada proyecto es único y merece una cotización personalizada que refleje tus necesidades específicas.</p>
+                    <br>
+                    <p style="font-weight: 600; font-size: 1.3em;">📱 Solicita tu cotización gratuita por WhatsApp</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Tiempos de Entrega</span>
+                    <h2>Plazos según tu Necesidad</h2>
+                    <p class="section-description">Adaptamos nuestros tiempos a tu calendario académico</p>
+                </div>
+                
+                <div class="delivery-options">
+                    <div class="delivery-card">
+                        <div class="delivery-icon">⚡</div>
+                        <div class="delivery-title">Trabajos Cortos</div>
+                        <p class="delivery-time">24 horas</p>
+                        <p class="step-description" style="margin-
